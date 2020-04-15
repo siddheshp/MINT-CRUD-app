@@ -1,0 +1,44 @@
+<h2>Update product</h2>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
+    <div class="form-group">
+        <label for="Id">Product Id</label>
+        <input type="text" formControlName="Id" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" formControlName="Name" placeholder="Product name" class="form-control">
+        <span class="alert-danger" *ngIf="productForm.get('Name').invalid && 
+                (productForm.get('Name').dirty || productForm.get('Name').touched)">
+            Plz enter product name</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Price">Price</label>
+        <input type="number" formControlName="Price" placeholder="Product price" class="form-control">
+        <span class="alert-danger" *ngIf="productForm.get('Price').invalid && 
+                (productForm.get('Price').dirty || productForm.get('Price').touched)">
+            Plz enter product price</span>
+    </div>
+
+    <div class="form-group">
+        <label for="CreatedDate">Created Date</label>
+        <input type="date" formControlName="CreatedDate" class="form-control">
+        <span class="alert-danger" *ngIf="productForm.get('CreatedDate').invalid && 
+                (productForm.get('CreatedDate').dirty || productForm.get('CreatedDate').touched)">
+            Plz select product date</span>
+    </div>
+
+    <div class="form-group">
+        <label for="Category">Category</label>
+        <input type="text" formControlName="Category" class="form-control">
+        <span class="alert-danger" *ngIf="productForm.get('Category').invalid && 
+                (productForm.get('Category').dirty || productForm.get('Category').touched)">
+            Plz select category</span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" [disabled]="productForm.invalid" class="btn btn-primary">Update Product</button>
+        <button [routerLink]="['/productlist']" class="btn btn-link">Product List</button>
+    </div>
+</form>
